@@ -2,6 +2,7 @@ package com.seesea.job.service.impl;
 
 import com.seesea.job.common.BaseException;
 import com.seesea.job.entity.req.CollectionReq;
+import com.seesea.job.util.JsonUtil;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
@@ -43,7 +44,9 @@ public class InfoCollectionServiceImpl extends AbstractInfoCollectionService {
         String url2 = "https://m.zhipin.com/wapi/zpgeek/mobile/jobs.json?experience=104&page=3&city=101020100&query=Java";
         boolean flag = true;
         while (flag){
-            doGet(url2);
+            String str = doGet(url2);
+            Map map = JsonUtil.JsonToObject(str,Map.class);
+
         }
 
 
