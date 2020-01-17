@@ -1,0 +1,45 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    password: qwe123
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/job
+#    ?allowMultiQueries=true&autoReconnect=true&zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8
+    username: root
+    validationQuery: select 'x'
+    poolPreparedStatements: true
+    testOnBorrow: false
+    testOnReturn: false
+    testWhileIdle: true
+    timeBetweenEvictionRunsMillis: 60000
+    filters: stat,wall,slf4j
+    initialSize: 1
+    maxActive: 20
+    maxPoolPreparedStatementPerConnectionSize: 20
+    maxWait: 60000
+    minEvictableIdleTimeMillis: 30000
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    minIdle: 3
+logging:
+  level:
+    mybatis: debug
+#mapper:
+#  identity: MYSQL
+#  mappers: com.seesea.job.common.BaseMapper
+#  not-empty: false
+mybatis:
+  mapper-locations: classpath:mybatis/*.xml
+  type-aliases-package: com.seesea.job.entity
+server:
+  port: 8000
+
+
+
+
+
+
+
+
+
+
+

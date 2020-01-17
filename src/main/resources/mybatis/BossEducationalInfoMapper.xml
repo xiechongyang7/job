@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seesea.job.mapper.BossEducationalInfoMapper">
+  <resultMap id="BaseResultMap" type="com.seesea.job.entity.BossEducationalInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="primary_key" jdbcType="INTEGER" property="primaryKey" />
+    <result column="educational" jdbcType="VARCHAR" property="educational" />
+    <result column="educational_code" jdbcType="VARCHAR" property="educationalCode" />
+  </resultMap>
+</mapper>
