@@ -46,7 +46,9 @@ public class InfoCollectionServiceImpl extends AbstractInfoCollectionService {
         while (flag){
             String str = doGet(url2);
             Map map = JsonUtil.JsonToObject(str,Map.class);
-
+            if(!"Success".equals(map.get("message"))){
+                flag = false;
+            }
         }
 
 
