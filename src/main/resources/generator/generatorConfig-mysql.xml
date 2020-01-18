@@ -33,7 +33,7 @@
 
         <!-- jdbc 连接配置 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/job"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/job?characterEncoding=utf8"
                         userId="root"
                         password="qwe123">
         </jdbcConnection>
@@ -59,17 +59,17 @@
 
         <!-- tableName：数据库表名，domainObjectName：生成文件名 ，schema：数据源-->
         <!--<table tableName="SIGN_SEAL_INFO" domainObjectName="SealInfo"></table>-->
-        <table tableName="boss_area_info" domainObjectName="BossAreaInfo"/>
-        <table tableName="boss_city_info" domainObjectName="BossCityInfo"/>
-        <table tableName="boss_educational_info" domainObjectName="BossEducationalInfo"/>
-        <table tableName="boss_experience_info" domainObjectName="BossExperienceInfo"/>
-        <table tableName="boss_financing_info" domainObjectName="BossFinancingInfo"/>
-        <table tableName="boss_hot_city_info" domainObjectName="BossHot_cityInfo"/>
-        <table tableName="boss_province_info" domainObjectName="BossProvinceInfo"/>
-        <table tableName="boss_salary_info" domainObjectName="BossSalaryInfo"/>
-        <table tableName="boss_scale_info" domainObjectName="BossScaleInfo"/>
-        <table tableName="job" domainObjectName="Job"/>
-        <!--<table tableName="SIGN_CLOB_INFO" domainObjectName="ClobInfo"></table>-->
+        <!--<table tableName="boss_area_info" domainObjectName="BossAreaInfo"/>-->
+        <!--<table tableName="boss_city_info" domainObjectName="BossCityInfo"/>-->
+        <!--<table tableName="boss_educational_info" domainObjectName="BossEducationalInfo"/>-->
+        <!--<table tableName="boss_experience_info" domainObjectName="BossExperienceInfo"/>-->
+        <!--<table tableName="boss_financing_info" domainObjectName="BossFinancingInfo"/>-->
+        <!--<table tableName="boss_hot_city_info" domainObjectName="BossHot_cityInfo"/>-->
+        <!--<table tableName="boss_province_info" domainObjectName="BossProvinceInfo"/>-->
+        <!--<table tableName="boss_salary_info" domainObjectName="BossSalaryInfo"/>-->
+        <!--<table tableName="boss_scale_info" domainObjectName="BossScaleInfo"/>-->
+        <!--<table tableName="job" domainObjectName="Job"/>-->
+        <table tableName="job_boss" domainObjectName="JobBoss"></table>
         <!--<table tableName="SIGN_ORG_INFO" domainObjectName="OrgInfo"></table>-->
         <!--<table tableName="SIGN_USER_INFO" domainObjectName="UserInfo"></table>-->
         <!--<table tableName="SIGN_CONTRACT_TEMPLATE" domainObjectName="ContractTemplate"></table>-->

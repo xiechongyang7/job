@@ -8,7 +8,7 @@ import com.seesea.job.service.InfoCollectionService;
 
 public abstract class AbstractInfoCollectionService extends BaseService implements InfoCollectionService {
 
-    public void infoCollection(CollectionReq req) throws BaseException {
+    public void infoCollection(CollectionReq req) throws BaseException, InterruptedException {
         throw new BaseException(ErrInfo.errMsg_10001,ErrInfo.errCode_10001);
     }
 }

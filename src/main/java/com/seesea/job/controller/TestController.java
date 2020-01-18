@@ -25,13 +25,29 @@ public class TestController {
 
     @RequestMapping(value = "/test",method = RequestMethod.POST)
     @ResponseBody
-    public Object test(CollectionReq req) throws BaseException {
+    public Object test(CollectionReq req) throws BaseException, InterruptedException {
 
         CollectionReq req1 = new CollectionReq();
         //java  1-3 年 近 一个月 大专 上海
         req1.setArea("101020100");
         req1.setEducational("202");
         service.infoCollection(req);
+        return 1;
+
+    }
+
+
+    @RequestMapping(value = "/test2",method = RequestMethod.POST)
+    @ResponseBody
+    public Object test2(CollectionReq req) throws BaseException {
+
+//        CollectionReq req1 = new CollectionReq();
+//        //java  1-3 年 近 一个月 大专 上海
+//        req1.setArea("101020100");
+//        req1.setEducational("202");
+//        service.infoCollection(req);
+
+
         return 1;
 
     }

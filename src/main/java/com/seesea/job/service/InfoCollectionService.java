@@ -13,6 +13,7 @@ public interface InfoCollectionService {
 
 
 
-    void infoCollection(CollectionReq req) throws BaseException;
+    void infoCollection(CollectionReq req) throws BaseException, InterruptedException;
 
+    String getCookies();
 }

@@ -3,7 +3,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     password: qwe123
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://127.0.0.1:3306/job
+    url: jdbc:mysql://127.0.0.1:3306/job?characterEncoding=utf8&serverTimezone=UTC
 #    ?allowMultiQueries=true&autoReconnect=true&zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8
     username: root
     validationQuery: select 'x'

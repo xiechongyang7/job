@@ -1,7 +1,10 @@
 package com.seesea.job.service.impl;
 
 import com.seesea.job.common.BaseException;
+import com.seesea.job.entity.Job;
+import com.seesea.job.entity.JobBoss;
 import com.seesea.job.entity.req.CollectionReq;
+import com.seesea.job.mapper.JobBossMapper;
 import com.seesea.job.util.JsonUtil;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -10,9 +13,15 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicHeader;
 import org.apache.http.util.EntityUtils;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -25,8 +34,9 @@ import java.util.Map;
 public class InfoCollectionServiceImpl extends AbstractInfoCollectionService {
 
 //    String a = "https://m.zhipin.com/wapi/zpgeek/mobile/jobs.json?experience=104&page=3&city=101120100&query=Java";
-
-    public void infoCollection(CollectionReq req) throws BaseException {
+    @Autowired
+    private JobBossMapper mapper;
+    public void infoCollection(CollectionReq req) throws BaseException, InterruptedException {
 
 //        String salary = req.getSalary();
 //        String area = req.getArea();
@@ -39,16 +49,76 @@ public class InfoCollectionServiceImpl extends AbstractInfoCollectionService {
 //        } catch (Exception e) {
 //           logger.error("获取url错误",e);
 //        }
-//java  1-3 年 近 一个月 大专
+//java  1-3 年 近 一个月 大专page=3&
 
-        String url2 = "https://m.zhipin.com/wapi/zpgeek/mobile/jobs.json?experience=104&page=3&city=101020100&query=Java";
+//        String url2 = "https://m.zhipin.com/wapi/zpgeek/mobile/jobs.json?experience=104&city=101020100&query=Java";
+        String url2 = "https://www.zhipin.com/mobile/jobs.json?city=101020100&query=java&page=";
         boolean flag = true;
+        int a = 0;
         while (flag){
-            String str = doGet(url2);
+            a++;
+            String str = doGet(url2+a);
             Map map = JsonUtil.JsonToObject(str,Map.class);
-            if(!"Success".equals(map.get("message"))){
-                flag = false;
+            logger.info(str);
+            if(!"成功".equals(map.get("resmsg"))){
+                logger.info(str);
+//                flag = false;
+                break;
             }
+            if((Boolean) map.get("hasMore")){
+                logger.info(str);
+//                flag = false;
+                break;
+            }
+            String html = map.get("html").toString();
+//            String html = ((Map)map.get("zpData")).get("html").toString();
+
+//            Document doc = Jsoup.parse(input, "UTF-8", "http://example.com/");
+//
+//            Elements links = doc.select("a[href]"); //带有href属性的a元素
+//            Elements pngs = doc.select("img[src$=.png]");
+//            //扩展名为.png的图片
+//
+//            Element masthead = doc.select("div.masthead").first();
+//            //class等于masthead的div标签
+//
+//            Elements resultLinks = doc.select("h3.r > a"); //在h3元素之后的a元素
+//             <li class="item">
+//            <a href="/job_detail/8e6e6455500eff690nN-2d20GVY~.html" ka="job_list_32" data-itemId="32" data-lid="8ppCcbYmciD.search.32" data-index="1">
+//                    <img src="https://img.bosszhipin.com/beijin/mcs/chatphoto/20191230/30ad984d40547a0263d9e7c916ffb7c504e9fed5525dee2adbdd999ee2249464_s.jpg?x-oss-process=image/resize,w_120,limit_0"/>
+//                <div class="text">
+//                    <div class="title"><h4>Java开发工程师</h4><span class="salary">12-22K</span></div>
+//                    <div class="name">轻轻教育</div>
+//                    <div class="msg"><em>上海</em><em>1-3年</em><em>本科</em></div>
+//                </div>
+//            </a>
+//</li>
+            Document doc = Jsoup.parse(html);
+            Elements contents = doc.getElementsByTag("li");
+
+            for(Element content:contents){
+                JobBoss job = new JobBoss();
+//                 job.setPrimaryKey();
+                job.setJobName(content.getElementsByTag("h4").html());
+                job.setCompanyName(content.getElementsByClass("name").html());
+                String salary = content.getElementsByClass("salary").html();
+                String[] salarys = salary.split("-");
+                job.setSalaryHeight(salarys[0]);
+                if(salarys.length>=2){
+                    job.setSalaryLow(salarys[1]);
+                }
+                job.setArea(content.getElementsByTag("em").get(0).html());
+                job.setCity(content.getElementsByTag("em").get(0).html());
+                job.setExperience(content.getElementsByTag("em").get(1).html());
+                job.setEducational(content.getElementsByTag("em").get(2).html());
+                job.setUrl(content.getElementsByTag("a").attr("href"));
+                job.setCreatTime(new Date());
+
+                mapper.insert(job);
+            }
+
+            Thread.sleep(3000);
+
         }
 
 
@@ -56,6 +126,8 @@ public class InfoCollectionServiceImpl extends AbstractInfoCollectionService {
 
 
     }
+
+
     public static String getReqtUrl(String url, Map<String, String> params) {
         StringBuilder builder = new StringBuilder(url);
         boolean isFirst = true;
@@ -89,6 +161,7 @@ public class InfoCollectionServiceImpl extends AbstractInfoCollectionService {
         HttpResponse response = null;
         try {
 
+            String cookie = "lastCity=101020100; _uab_collina=157295165063968628164412; __c=1579340403; __g=-; Hm_lvt_194df3105ad7148dcf2b98a91b5e727a=1579340403; __l=l=https%3A%2F%2Fwww.baidu.com%2Flink%3Furl%3DDxkvRiCGDpWf9dJXzbl4lF_fvnGju6sYildui8iDtXGQJFkyEMhPTPQm4M2TJbl9%26wd%3D%26eqid%3De17df7e10008b7e7000000035e22d26e&r=https%3A%2F%2Fwww.baidu.com%2Flink%3Furl%3DDxkvRiCGDpWf9dJXzbl4lF_fvnGju6sYildui8iDtXGQJFkyEMhPTPQm4M2TJbl9%26wd%3D%26eqid%3De17df7e10008b7e7000000035e22d26e&friend_source=0&friend_source=0; __zp_stoken__=ce26zEyJ3H9Qzqu37nCY3uvA0RHjwFtpwZb8SP8M6ROeciXMy5d454xpJUUA5uEEb2U5zZMeyFqusXSrQRB%2B72MMloU7W5yNASU8XpRbM8fuuqS9kQzia%2Bgh6XuOMtgIIqT7; __a=69653357.1572951651.1572951651.1579340403.33.2.23.33; Hm_lpvt_194df3105ad7148dcf2b98a91b5e727a=1579344936; __zp_sname__=6bffc4c7; __zp_sseed__=HKBcGqybME3jU6uOHKdJTKI8FaBqOtAULkK0y+nuPkU=; __zp_sts__=1579345118831";
             client = HttpClientBuilder.create().build();
 
             //发送get请求
@@ -97,7 +170,7 @@ public class InfoCollectionServiceImpl extends AbstractInfoCollectionService {
                     new BasicHeader("accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3"),
                     new BasicHeader("accept-language", "zh-CN,zh;q=0.9,und;q=0.8"),
                     new BasicHeader("cache-control", "max-age=0"),
-                    new BasicHeader("cookie", "lastCity=101020100; _uab_collina=155926782246169454932204; _bl_uid=1Ik2w26emaOpkhf5Ii3twkh4n5gd; __c=1579168807; __g=-; __l=l=https%3A%2F%2Fwww.zhipin.com%2Fshanghai%2F&r=&friend_source=0&friend_source=0; Hm_lvt_194df3105ad7148dcf2b98a91b5e727a=1577933123,1579168807,1579240447,1579252890; toUrl=/; __zp_stoken__=06fbkZQ91jE%2Bnhjf63UO1RwUnUe%2BPuwEk%2B%2BhCZDQNAb%2Bt0jdDvVUZXu8JUZtgvsOTDiR4Ff6uDrgzMt0kh1%2FKTRsx41lzHkLpOHhdpTnG%2FGK5Gi2uLwBfRIfR%2FZs%2BFFKVr9Z; __a=24389340.1559267822.1577933123.1579168807.418.12.74.418; Hm_lpvt_194df3105ad7148dcf2b98a91b5e727a=1579253575"),
+                    new BasicHeader("cookie",cookie),
                     new BasicHeader("sec-fetch-mode", "navigate"),
                     new BasicHeader("sec-fetch-site", "none"),
                     new BasicHeader("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"),
@@ -121,5 +194,11 @@ public class InfoCollectionServiceImpl extends AbstractInfoCollectionService {
             }
         }
         return strResult;
+    }
+
+
+    @Override
+    public String getCookies() {
+        return null;
     }
 }
