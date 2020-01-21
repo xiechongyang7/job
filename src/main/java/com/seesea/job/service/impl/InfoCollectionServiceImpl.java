@@ -65,7 +65,7 @@ public class InfoCollectionServiceImpl extends AbstractInfoCollectionService {
 //                flag = false;
                 break;
             }
-            if((Boolean) map.get("hasMore")){
+            if(!(Boolean) map.get("hasMore")){
                 logger.info(str);
 //                flag = false;
                 break;
