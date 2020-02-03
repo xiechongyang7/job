@@ -35,6 +35,8 @@ public class JobBoss implements Serializable {
     @Column(name = "salary_low")
     private String salaryLow;
 
+    private String type;
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -191,6 +193,20 @@ public class JobBoss implements Serializable {
         this.salaryLow = salaryLow;
     }
 
+    /**
+     * @return type
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * @param type
+     */
+    public void setType(String type) {
+        this.type = type;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -208,6 +224,7 @@ public class JobBoss implements Serializable {
         sb.append(", creatTime=").append(creatTime);
         sb.append(", salaryHeight=").append(salaryHeight);
         sb.append(", salaryLow=").append(salaryLow);
+        sb.append(", type=").append(type);
         sb.append("]");
         return sb.toString();
     }

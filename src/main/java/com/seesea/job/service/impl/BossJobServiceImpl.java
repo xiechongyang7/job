@@ -30,8 +30,8 @@ import java.util.Map;
  * @createTime 2020/1/17 下午 3:27
  * @since JDK1.8
  */
-@Service
-public class InfoCollectionServiceImpl extends AbstractInfoCollectionService {
+@Service(value = "boss")
+public class BossJobServiceImpl extends AbstractInfoCollectionService {
 
 //    String a = "https://m.zhipin.com/wapi/zpgeek/mobile/jobs.json?experience=104&page=3&city=101120100&query=Java";
     @Autowired
@@ -113,7 +113,7 @@ public class InfoCollectionServiceImpl extends AbstractInfoCollectionService {
                 job.setEducational(content.getElementsByTag("em").get(2).html());
                 job.setUrl(content.getElementsByTag("a").attr("href"));
                 job.setCreatTime(new Date());
-
+                job.setType("1");
                 mapper.insert(job);
             }
 
