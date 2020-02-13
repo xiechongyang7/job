@@ -4,6 +4,7 @@ import com.seesea.job.common.BaseException;
 import com.seesea.job.entity.req.CollectionReq;
 import com.seesea.job.service.impl.BossJobServiceImpl;
 import com.seesea.job.service.impl.LaGouJobServiceImpl;
+import com.seesea.job.service.impl.ZhihuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,9 @@ public class TestController {
     @Autowired
     private LaGouJobServiceImpl lagou;
 
+    @Autowired
+    private ZhihuService zhihu;
+
     @RequestMapping(value = "/test", method = RequestMethod.POST)
     @ResponseBody
     public Object test(CollectionReq req) throws BaseException, InterruptedException {
@@ -51,6 +55,26 @@ public class TestController {
         req.setArea("101020100");
         req.setArea("101020100");
         lagou.infoCollection(req);
+
+//        CollectionReq req1 = new CollectionReq();
+//        //java  1-3 年 近 一个月 大专 上海
+//        req1.setArea("101020100");
+//        req1.setEducational("202");
+//        service.infoCollection(req);
+
+
+        return 1;
+
+    }
+
+    @RequestMapping(value = "/test3", method = RequestMethod.POST)
+    @ResponseBody
+    public Object test3(CollectionReq req) throws BaseException, InterruptedException {
+
+        req.setArea("101020100");
+        req.setArea("101020100");
+        req.setArea("101020100");
+        zhihu.run();
 
 //        CollectionReq req1 = new CollectionReq();
 //        //java  1-3 年 近 一个月 大专 上海

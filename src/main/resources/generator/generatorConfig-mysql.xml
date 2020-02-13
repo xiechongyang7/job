@@ -69,7 +69,8 @@
         <!--<table tableName="boss_salary_info" domainObjectName="BossSalaryInfo"/>-->
         <!--<table tableName="boss_scale_info" domainObjectName="BossScaleInfo"/>-->
         <!--<table tableName="job" domainObjectName="Job"/>-->
-        <table tableName="job_boss" domainObjectName="JobBoss"></table>
+<!--        <table tableName="job_boss" domainObjectName="JobBoss"></table>-->
+        <table tableName="zhihu" domainObjectName="Zhihu"></table>
         <!--<table tableName="SIGN_ORG_INFO" domainObjectName="OrgInfo"></table>-->
         <!--<table tableName="SIGN_USER_INFO" domainObjectName="UserInfo"></table>-->
         <!--<table tableName="SIGN_CONTRACT_TEMPLATE" domainObjectName="ContractTemplate"></table>-->

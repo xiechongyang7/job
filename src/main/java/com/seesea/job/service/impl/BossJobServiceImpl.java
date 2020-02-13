@@ -1,7 +1,6 @@
 package com.seesea.job.service.impl;
 
 import com.seesea.job.common.BaseException;
-import com.seesea.job.entity.Job;
 import com.seesea.job.entity.JobBoss;
 import com.seesea.job.entity.req.CollectionReq;
 import com.seesea.job.mapper.JobBossMapper;
@@ -19,6 +18,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 import java.util.Date;
@@ -52,7 +52,7 @@ public class BossJobServiceImpl extends AbstractInfoCollectionService {
 //java  1-3 年 近 一个月 大专page=3&
 
 //        String url2 = "https://m.zhipin.com/wapi/zpgeek/mobile/jobs.json?experience=104&city=101020100&query=Java";
-        String url2 = "https://www.zhipin.com/mobile/jobs.json?city=101020100&query=java&page=";
+        String url2 = "https://www.zhipin.com/mobile/jobs.json?degree=202&experience=104&city=101020100&query=java&page=";
         boolean flag = true;
         int a = 0;
         while (flag){
@@ -65,7 +65,12 @@ public class BossJobServiceImpl extends AbstractInfoCollectionService {
 //                flag = false;
                 break;
             }
-            if(!(Boolean) map.get("hasMore")){
+//            if(!(Boolean) map.get("hasMore")){
+//                logger.info(str);
+////                flag = false;
+//                break;
+//            }
+            if(StringUtils.isEmpty(map.get("html"))){
                 logger.info(str);
 //                flag = false;
                 break;
@@ -111,13 +116,13 @@ public class BossJobServiceImpl extends AbstractInfoCollectionService {
                 job.setCity(content.getElementsByTag("em").get(0).html());
                 job.setExperience(content.getElementsByTag("em").get(1).html());
                 job.setEducational(content.getElementsByTag("em").get(2).html());
-                job.setUrl(content.getElementsByTag("a").attr("href"));
+                job.setUrl("https://www.zhipin.com"+content.getElementsByTag("a").attr("href"));
                 job.setCreatTime(new Date());
                 job.setType("1");
                 mapper.insert(job);
             }
 
-            Thread.sleep(3000);
+//            Thread.sleep(3000);
 
         }
 

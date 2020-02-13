@@ -192,4 +192,40 @@ public class LaGouJobServiceImpl extends AbstractInfoCollectionService{
 
         return null;
     }
+
+//
+//
+//    public static void bubbleSort(int[] values) {
+//        int temp;
+//        for (int i = 0; i < values.length; i++) {
+//            for (int j = 0; j < values.length - 1 - i; j++) {
+//                //减i原因：内层循环，每循环完一趟就在数组末产生一个最大数，即最大数就不用比较了。
+//                if (values[j] > values[j + 1]) {
+//                    temp = values[j];
+//                    values[j] = values[j + 1];
+//                    values[j + 1] = temp;
+//                }
+//            }
+//        }
+//    }
+//
+//
+//    public static void main(String[] args) {
+//        int[] values = { 3, 1, 6, 2, 9, 0, 7, 4, 5, 8 };
+//        maopao(values);
+//        System.out.println(Arrays.toString(values));
+//    }
+//
+//    public static void maopao(int[] values){
+//        for(int i = 0 ;i < values.length; i++ ){
+//            for(int j = 0;j < values.length-1-i ;j++){
+//                if(values[j] < values [j+1] ){
+//                    int temp = values[j+1];
+//                    values[j+1] = values[j] ;
+//                    values[j] = temp;
+//                }
+//            }
+//        }
+//    }
+
 }

@@ -122,7 +122,6 @@ public class DruidDBConfig {
         reg.addInitParameter("loginPassword", "123456");
         return reg;
     }
-
 //    @Bean
 //    public FilterRegistrationBean filterRegistrationBean() {
 //        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
