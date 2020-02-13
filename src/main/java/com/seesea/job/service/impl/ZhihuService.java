@@ -13,8 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service(value = "zhihu")
 public class ZhihuService  extends AbstractInfoCollectionService {
@@ -30,40 +29,77 @@ public class ZhihuService  extends AbstractInfoCollectionService {
 
 
     public void run(){
-        String url = "https://www.zhihu.com/api/v4/questions/39501641/answers?limit=20&offset=11340&sort_by=updated";
+//        String url = "https://www.zhihu.com/api/v4/questions/39501641/answers?limit=20&offset=11340&sort_by=updated";
 
 
+        String url = "https://www.zhihu.com/api/v4/questions/39501641/answers?include=data%5B%2A%5D.is_normal%2Cadmin_closed_comment%2Creward_info%2Cis_collapsed%2Cannotation_action%2Cannotation_detail%2Ccollapse_reason%2Cis_sticky%2Ccollapsed_by%2Csuggest_edit%2Ccomment_count%2Ccan_comment%2Ccontent%2Ceditable_content%2Cvoteup_count%2Creshipment_settings%2Ccomment_permission%2Ccreated_time%2Cupdated_time%2Creview_info%2Crelevant_info%2Cquestion%2Cexcerpt%2Crelationship.is_authorized%2Cis_author%2Cvoting%2Cis_thanked%2Cis_nothelp%2Cis_labeled%3Bdata%5B%2A%5D.mark_infos%5B%2A%5D.url%3Bdata%5B%2A%5D.author.follower_count%2Cbadge%5B%2A%5D.topics&offset=5&platform=desktop&sort_by=default&limit=";
         boolean flag = true;
 
-        int a = 0;
+
+
+//        while (flag) {
+//            a++;
+//            String result = doGet(url);
+//            Map map = JsonUtil.JsonToObject(result,Map.class);
+//            String data = map.get("data")+"";
+//            String paging = map.get("paging")+"";
+//
+//            ZhiHuData zhiHuData = JsonUtil.JsonToObject(data, ZhiHuData.class);
+//            ZhiHuPaging zhiHuPaging = JsonUtil.JsonToObject(paging,ZhiHuPaging.class);
+//            List<ZhiHuInfo> infos = zhiHuData.getZhiHuInfos();
+//
+//            for(ZhiHuInfo info : infos){
+//                Zhihu zhihu = new Zhihu();
+//                ZhiHuAuthor author = info.getAuthor();
+//                if("匿名用户".equals(author.getName())){
+//                    continue;
+//                }
+//                zhihu.setAnswersUrl(info.getUrl());
+////                zhihu.setAuthor(author.get);
+//                zhihu.setHeadline(author.getHeadline());
+//                zhihu.setId(author.getId());
+//                zhihu.setName(author.getName());
+//                zhihu.setUrl(author.getUrl());
+//                zhihu.setUrlToken(author.getUrl_token());
+//                zhihu.setCreatedTime(new Date(Long.valueOf(info.getCreatedTime())));
+//                zhihu.setUpdatedTime(new Date(Long.valueOf(info.getUpdatedTime())));
+//                mapper.insert(zhihu);
+//            }
+        int a = 5;
+
         while (flag) {
-            a++;
-            String result = doGet(url);
-            Map map = JsonUtil.JsonToObject(result,Map.class);
-            String data = map.get("data")+"";
-            String paging = map.get("paging")+"";
+                url = url+a;
+                a= a+5;
+                String result = doGet(url);
+                Map map = JsonUtil.JsonToObject(result,Map.class);
+                List<Map> data = (List) map.get("data");
+//                String paging = (String) ((Map)map.get("paging")).get("next");
 
-            ZhiHuData zhiHuData = JsonUtil.JsonToObject(data, ZhiHuData.class);
-            ZhiHuPaging zhiHuPaging = JsonUtil.JsonToObject(paging,ZhiHuPaging.class);
-            List<ZhiHuInfo> infos = zhiHuData.getZhiHuInfos();
+//                ZhiHuData zhiHuData = JsonUtil.JsonToObject(data, ZhiHuData.class);
+//                ZhiHuPaging zhiHuPaging = JsonUtil.JsonToObject(paging,ZhiHuPaging.class);
+//                List<ZhiHuInfo> infos = zhiHuData.getZhiHuInfos();
 
-            for(ZhiHuInfo info : infos){
-                Zhihu zhihu = new Zhihu();
-                ZhiHuAuthor author = info.getAuthor();
-                zhihu.setAnswersUrl(info.getUrl());
+                for(Map map1 : data){
+                    Zhihu zhihu = new Zhihu();
+                    Map author = (Map) map1.get("author");
+                    if("知乎用户".equals(author.get("name")+"")||"匿名用户".equals(author.get("name")+"")){
+                        continue;
+                    }
+                    zhihu.setAnswersUrl(map1.get("url")+"");
 //                zhihu.setAuthor(author.get);
-//                zhihu.setHeadline();
-                zhihu.setHeadline(author.getHeadline());
-                zhihu.setId(author.getId());
-                zhihu.setName(author.getName());
-                zhihu.setUrl(author.getUrl());
-                zhihu.setUrlToken(author.getUrl_token());
-                mapper.insert(zhihu);
-            }
+                    zhihu.setHeadline(author.get("headline")+"");
+                    zhihu.setId(author.get("id")+"");
+                    zhihu.setName(author.get("name")+"");
+                    zhihu.setUrl(author.get("url")+"");
+                    zhihu.setUrlToken(author.get("url_token")+"");
+                    zhihu.setCreatedTime(getDateFromTimeMillis(map1.get("created_time")+"",true));
+                    zhihu.setUpdatedTime(getDateFromTimeMillis(map1.get("updated_time")+"",false));
+                    mapper.insert(zhihu);
+                }
 
-            url = zhiHuPaging.getNext();
+//            url = paging.replace("&","");
 
-            if (a==1) flag = false;
+//            if (a==1) flag = false;
         }
 
 
@@ -120,5 +156,42 @@ public class ZhihuService  extends AbstractInfoCollectionService {
         return strResult;
     }
 
+    public static void main(String[] args) {
+
+//        Map map = new HashMap();
+//        map.put("a",1454270582000l);
+//
+//        String b  = map.get("a")+"";
+//        System.out.println(b);
+//        System.out.println(Long.valueOf(b));
+//
+//        Long c  = Long.valueOf(b);
+//        System.out.println(new Date(
+//             c
+//        ));
+//        System.out.println(new Date(
+//                c
+//        ));
+//        System.out.println(getDateFromTimeMillis(c));
+//        System.out.println(getDateFromTimeMilli(c));
+    }
+
+    /**
+     * 根据时间戳返回日期对象
+     *
+     * @Desc:
+     * @author: liubing
+     * @return Date
+     */
+    public static Date getDateFromTimeMillis(String currentTimeMillis,boolean flags) {
+
+        long currentTimeMilli = Long.valueOf(currentTimeMillis+"000");
+//        if( flags == true && 1483200000000L <currentTimeMilli){
+//            throw new RuntimeException("over over over over over over over over over over over over over over over over over over");
+//        }
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(currentTimeMilli);
+        return cal.getTime();
+    }
 
 }

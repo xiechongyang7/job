@@ -1,5 +1,8 @@
 package com.seesea.job.entity;
 
+import javax.persistence.Column;
+import java.util.Date;
+
 public class ZhiHuInfo {
 
 //    {
@@ -45,6 +48,23 @@ public class ZhiHuInfo {
 //    }
     private ZhiHuAuthor author;
     private String url;
+    private String createdTime;
+    private String updatedTime;
+    public String getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(String createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public String getUpdatedTime() {
+        return updatedTime;
+    }
+
+    public void setUpdatedTime(String updatedTime) {
+        this.updatedTime = updatedTime;
+    }
 
     public ZhiHuAuthor getAuthor() {
         return author;

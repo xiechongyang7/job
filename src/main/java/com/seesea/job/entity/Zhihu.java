@@ -1,6 +1,7 @@
 package com.seesea.job.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.*;
 
 public class Zhihu implements Serializable {
@@ -22,6 +23,12 @@ public class Zhihu implements Serializable {
     private String url;
 
     private String headline;
+
+    @Column(name = "created_time")
+    private Date createdTime;
+
+    @Column(name = "updated_time")
+    private Date updatedTime;
 
     private static final long serialVersionUID = 1L;
 
@@ -137,6 +144,34 @@ public class Zhihu implements Serializable {
         this.headline = headline;
     }
 
+    /**
+     * @return created_time
+     */
+    public Date getCreatedTime() {
+        return createdTime;
+    }
+
+    /**
+     * @param createdTime
+     */
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    /**
+     * @return updated_time
+     */
+    public Date getUpdatedTime() {
+        return updatedTime;
+    }
+
+    /**
+     * @param updatedTime
+     */
+    public void setUpdatedTime(Date updatedTime) {
+        this.updatedTime = updatedTime;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -151,6 +186,8 @@ public class Zhihu implements Serializable {
         sb.append(", name=").append(name);
         sb.append(", url=").append(url);
         sb.append(", headline=").append(headline);
+        sb.append(", createdTime=").append(createdTime);
+        sb.append(", updatedTime=").append(updatedTime);
         sb.append("]");
         return sb.toString();
     }
