@@ -52,7 +52,7 @@ public class InfoCollectionServiceImpl extends AbstractInfoCollectionService {
 //java  1-3 年 近 一个月 大专page=3&
 
 //        String url2 = "https://m.zhipin.com/wapi/zpgeek/mobile/jobs.json?experience=104&city=101020100&query=Java";
-        String url2 = "https://www.zhipin.com/mobile/jobs.json?city=101020100&query=java&page=";
+        String url2 = "https://www.zhipin.com/mobile/jobs.json?city=101120100&query=java&page=";
         boolean flag = true;
         int a = 0;
         while (flag){
@@ -65,7 +65,7 @@ public class InfoCollectionServiceImpl extends AbstractInfoCollectionService {
 //                flag = false;
                 break;
             }
-            if((Boolean) map.get("hasMore")){
+            if(!(Boolean) map.get("hasMore")){
                 logger.info(str);
 //                flag = false;
                 break;
@@ -161,7 +161,7 @@ public class InfoCollectionServiceImpl extends AbstractInfoCollectionService {
         HttpResponse response = null;
         try {
 
-            String cookie = "lastCity=101020100; _uab_collina=157295165063968628164412; __c=1579340403; __g=-; Hm_lvt_194df3105ad7148dcf2b98a91b5e727a=1579340403; __l=l=https%3A%2F%2Fwww.baidu.com%2Flink%3Furl%3DDxkvRiCGDpWf9dJXzbl4lF_fvnGju6sYildui8iDtXGQJFkyEMhPTPQm4M2TJbl9%26wd%3D%26eqid%3De17df7e10008b7e7000000035e22d26e&r=https%3A%2F%2Fwww.baidu.com%2Flink%3Furl%3DDxkvRiCGDpWf9dJXzbl4lF_fvnGju6sYildui8iDtXGQJFkyEMhPTPQm4M2TJbl9%26wd%3D%26eqid%3De17df7e10008b7e7000000035e22d26e&friend_source=0&friend_source=0; __zp_stoken__=ce26zEyJ3H9Qzqu37nCY3uvA0RHjwFtpwZb8SP8M6ROeciXMy5d454xpJUUA5uEEb2U5zZMeyFqusXSrQRB%2B72MMloU7W5yNASU8XpRbM8fuuqS9kQzia%2Bgh6XuOMtgIIqT7; __a=69653357.1572951651.1572951651.1579340403.33.2.23.33; Hm_lpvt_194df3105ad7148dcf2b98a91b5e727a=1579344936; __zp_sname__=6bffc4c7; __zp_sseed__=HKBcGqybME3jU6uOHKdJTKI8FaBqOtAULkK0y+nuPkU=; __zp_sts__=1579345118831";
+            String cookie = "lastCity=101020100; _uab_collina=157295165063968628164412; __c=1579340403; __g=-; Hm_lvt_194df3105ad7148dcf2b98a91b5e727a=1579340403; __l=l=https%3A%2F%2Fwww.baidu.com%2Flink%3Furl%3DDxkvRiCGDpWf9dJXzbl4lF_fvnGju6sYildui8iDtXGQJFkyEMhPTPQm4M2TJbl9%26wd%3D%26eqid%3De17df7e10008b7e7000000035e22d26e&r=https%3A%2F%2Fwww.baidu.com%2Flink%3Furl%3DDxkvRiCGDpWf9dJXzbl4lF_fvnGju6sYildui8iDtXGQJFkyEMhPTPQm4M2TJbl9%26wd%3D%26eqid%3De17df7e10008b7e7000000035e22d26e&friend_source=0&friend_source=0; __a=69653357.1572951651.1572951651.1579340403.36.2.26.36; Hm_lpvt_194df3105ad7148dcf2b98a91b5e727a=1579345857; __zp_stoken__=ce26zEyJ3H9Qzqu37nCY3uvA0d4slcvYkkmgWho2%2FFBqPKtfFW%2Fgdgd8UvVYjpF7ebqazZMeyFqusXSrQRB%2B72MMlnMKrCinM3cuHJlRaOSKuse9kQzia%2Bgh6XuOMtgIIqT7";
             client = HttpClientBuilder.create().build();
 
             //发送get请求
