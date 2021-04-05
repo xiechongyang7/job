@@ -141,6 +141,17 @@
                         <artifactId>mapper</artifactId>
                         <version>4.0.4</version>
                     </dependency>
+                    <!-- https://mvnrepository.com/artifact/com.belerweb/pinyin4j -->
+                    <!--<dependency>-->
+                        <!--<groupId>com.belerweb</groupId>-->
+                        <!--<artifactId>pinyin4j</artifactId>-->
+                        <!--<version>2.5.0</version>-->
+                    <!--</dependency>-->
+                    <!--<dependency>-->
+                        <!--<groupId>com.belerweb</groupId>-->
+                        <!--<artifactId>pinyin4j</artifactId>-->
+                        <!--<version>2.5.0</version>-->
+                    <!--</dependency>-->
                 </dependencies>
                 <configuration>
                     <!-- 允许移动生成的文件 -->

@@ -2,6 +2,7 @@ package com.seesea.job.controller;
 
 import com.seesea.job.common.BaseException;
 import com.seesea.job.entity.req.CollectionReq;
+import com.seesea.job.service.GetFangZiInfoService;
 import com.seesea.job.service.InfoCollectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,11 @@ public class TestController {
 
     @Autowired
     private InfoCollectionService service;
+
+
+
+    @Autowired
+    private GetFangZiInfoService servicez;
 
     @RequestMapping(value = "/test",method = RequestMethod.POST)
     @ResponseBody
@@ -46,7 +52,7 @@ public class TestController {
 //        req1.setArea("101020100");
 //        req1.setEducational("202");
 //        service.infoCollection(req);
-
+        servicez.getFangZiInfo("浦东");
 
         return 1;
 
