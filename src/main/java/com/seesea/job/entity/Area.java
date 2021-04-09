@@ -4,8 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 public class Area implements Serializable {
-    @Id
-    private Integer id;
+    private String id;
 
     @Column(name = "area_name")
     private String areaName;
@@ -16,7 +15,7 @@ public class Area implements Serializable {
 
     private String year;
 
-    private Integer value;
+    private String value;
 
     private String link;
 
@@ -33,14 +32,14 @@ public class Area implements Serializable {
     /**
      * @return id
      */
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
     /**
      * @param id
      */
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -103,14 +102,14 @@ public class Area implements Serializable {
     /**
      * @return value
      */
-    public Integer getValue() {
+    public String getValue() {
         return value;
     }
 
     /**
      * @param value
      */
-    public void setValue(Integer value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

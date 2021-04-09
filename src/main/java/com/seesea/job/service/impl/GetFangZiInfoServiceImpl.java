@@ -8,6 +8,7 @@ import com.seesea.job.mapper.AreaMapper;
 import com.seesea.job.mapper.TownMapper;
 import com.seesea.job.service.GetFangZiInfoService;
 import com.seesea.job.util.Pinyin;
+import org.apache.commons.io.FileUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
@@ -22,8 +23,10 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -45,98 +48,108 @@ public class GetFangZiInfoServiceImpl extends BaseLogger implements GetFangZiInf
     private AreaMapper areaMapper;
 
     @Override
-    public void getFangZiInfo(String townName) {
+    public void getFangZiInfo(String towncc) {
+
         Town town1 = new Town();
-        town1.setTown(townName);
+        town1.setTown(towncc);
         List<Town> list = townMapper.select(town1);
-        logger.info(list.toString());
-        for (Town town : list) {
-            Integer id = town.getId();
-            String townNames = town.getTown();
-            String name = town.getName();
-            String pinyin = town.getPinyin();
-            Integer num = town.getNum();
-//            beicai/
-            try {
 
-                boolean flag = false;
-                int page = 1;
+//        for (Town town : list) {
+//            Integer id = town.getId();
+//            String townNames = town.getTown();
+//            String name = town.getName();
+//            String pinyin = town.getPinyin();
+//            Integer num = town.getNum();
+////            beicai/
+        try {
+            for(Town town : list){
+//                String townNames = town.getTown();
+                String townNamec = town.getName();
+                String pinyin = town.getPinyin();
+                boolean flag = true;
+                int page = 0;
                 do {
-                    String urls = url + Pinyin.HanziToPinyin(name) + "/pg" + page;
-                    List<Area> area = getArea(urls);
                     page++;
-                    if (area.isEmpty()) {
-                        flag = true;
+                    String urls = url + pinyin + "/pg" + page;
+                    try {
+                        logger.info("目前进行{}-{},第{}页",towncc,townNamec,page);
+                        List<Area> area = getArea(urls,pinyin,page);
+                        if (area.isEmpty()) {
+                            flag = false;
+                        }else {
+                            areaMapper.insertList(area);
+                        }
+                    } catch (Exception e) {
+                        logger.error("错误页数" + page + "错误url" + urls, e);
                     }
+
                 } while (flag);
-
-            } catch (Exception e) {
-                logger.error("错误", e);
+                logger.info(towncc+townNamec+"完成！！！");
             }
-
-
+            logger.info(towncc+"完成！！！");
+        } catch (Exception e) {
+            logger.error("错误", e);
         }
+
 
     }
 
-    public List<Area> getArea(String url) {
+    public List<Area> getArea(String url,String pinyinName,Integer page) throws IOException {
         List<Area> areas = new ArrayList<>();
         String html = doGet(url);
-
         Document doc = Jsoup.parse(html);
-        Elements ul = doc.getElementsByClass("listContent");
-
-        for (Element element : ul) {
-
-            /***
-             * <li class="clear xiaoquListItem CLICKDATA" data-click-evtid="11966" data-click-event="WebClick" data-action="source_type=PC小区列表页房源卡片点击&click_position=0&resblock_id=5011000018309&resblock_name=万邦都市花园" data-index="0" data-log_index="0" data-id="5011000018309" data-el="xiaoqu" data-housecode="5011000018309" data-is_focus="" data-sl="">
-             *     <a class="img maidian-detail" href="https://sh.ke.com/xiaoqu/5011000018309/" data-maidian="431564988114182144" target="_blank"  title="万邦都市花园">
-             *     <img class="lj-lazy" src="https://s1.ljcdn.com/pegasus/redskull/images/common/blank.gif?_v=20210330151409" data-original="https://ke-image.ljcdn.com/hdic-resblock/3680c7b9-63b7-4aa6-9257-7ef369f94153.jpg.232x174.jpg" alt="万邦都市花园" title="万邦都市花园">
-             *     </a>
-             *     <div class="info">
-             *     <div class="title">
-             *         <a class="maidian-detail" href="https://sh.ke.com/xiaoqu/5011000018309/" target="_blank" data-maidian="431564988114182144" title="万邦都市花园">万邦都市花园</a>
-             *                             </div>
-             *                             <div class="houseInfo">
-             *         <span class="houseIcon"></span>
-             *                                                             <a title="万邦都市花园网签"  href="https://sh.ke.com/chengjiao/c5011000018309/" >90天成交0套</a>
-             *                                                             <span class="cutLine">|</span><a title="万邦都市花园租房"  href="http://sh.zu.ke.com/zufang/c5011000018309/" >32套正在出租</a>
-             *                                 </div>
-             *                         <div class="positionInfo">
-             *         <span class="positionIcon"></span>
-             *         <a href="https://sh.ke.com/xiaoqu/pudong/" class="district" title="浦东小区">浦东</a>
-             *         &nbsp;<a href="https://sh.ke.com/xiaoqu/beicai/" class="bizcircle" title="北蔡小区">北蔡</a>&nbsp;
-             *                                                         /&nbsp;2000年建成
-             *                             </div>
-             *                         <div class="tagList">
-             *                                                             <span>近地铁2号线龙阳路站</span>
-             *                             </div>
-             *     </div>
-             *     <div class="xiaoquListItemRight">
-             *     <div class="xiaoquListItemPrice">
-             *                                 <div class="totalPrice"><span>108662</span>元/m<sup>2</sup></div>
-             *                                 <div class="priceDesc">3月二手房参考均价</div>
-             *     </div>
-             *                         <div class="xiaoquListItemSellCount">
-             *         <a title="万邦都市花园二手房" href="https://sh.ke.com/ershoufang/c5011000018309/" class="totalSellCount"><span>18</span>套</a>
-             *         <div class="sellCountDesc">在售二手房</div>
-             *     </div>
-             *                         </div>
-             * </li>
-             */
-            Area area = new Area();
-            String areaName = element.getElementsByClass("lj-lazy").attr("title");
-            String region = element.getElementsByClass("district").html();
-            String town = element.getElementsByClass("bizcircle").html();
-            String year = element.getElementsByClass("positionInfo").html();
-            String value = element.getElementsByClass("totalPrice").html();
-//            String link = element.getElementsByClass("tagList").html();
-            String mark = element.getElementsByClass("tagList").html();
-//            String clinch = element.getElementsByClass("tagList").html();
-//            String rent = element.getElementsByClass("tagList").html();
-            String sale = element.getElementsByClass("totalSellCount").html();
+        Elements ulz = doc.getElementsByClass("listContent");
+        if(ulz.size()<=0){
+            return areas;
+        }
+        Element ul = ulz.get(0);
+        if (ul == null) {
+            return areas;
         }
 
+
+        Elements li = ul.getElementsByTag("li");
+        String region = "";
+        String town = "";
+        for (int i = 1; i < li.size() + 1; i++) {
+            Element element = li.get(i - 1);
+            try {
+                String areaName = element.getElementsByClass("lj-lazy").attr("title");
+                region = element.getElementsByClass("district").html();
+                town = element.getElementsByClass("bizcircle").html();
+                String year = element.getElementsByClass("positionInfo").html();
+                year = year.substring(year.length() - 7);
+                String value = element.getElementsByClass("totalPrice").get(0).getElementsByTag("span").html();
+                String link = element.getElementsByClass("maidian-detail").get(0).attr("href");
+                String mark = element.getElementsByClass("tagList").get(0).getElementsByTag("span").html();
+                Elements elements = element.getElementsByClass("houseInfo").get(0).getElementsByTag("a");
+                String clinch = "";
+                String rent = "";
+                if(elements.size()>=2){
+                     clinch = elements.get(0).html();
+                     rent = elements.get(1).html();
+                }
+                String sale = element.getElementsByClass("totalSellCount").get(0).getElementsByTag("span").html();
+
+                Area area = new Area();
+                area.setId(Pinyin.HanziToPinyin(region)+"-"+pinyinName+"-"+getReplenish(page,4)+"-"+getReplenish(i,4));
+                area.setAreaName(areaName);
+                area.setRegion(region);
+                area.setTown(town);
+                area.setYear(year);
+                area.setValue(value);
+                area.setLink(link);
+                area.setMark(mark);
+                area.setClinch(clinch);
+                area.setRent(rent);
+                area.setSale(sale);
+//                logger.info(area.toString());
+                areas.add(area);
+            } catch (Exception e) {
+                logger.error("错误第{}页,第{}个,错误的html{}",page,i,element, e);
+            }
+        }
+        FileUtils.writeStringToFile(new File("E:\\workspace3\\job\\src\\main\\resources\\html\\" + region+"-"+town+"-"+page+".html"), String.valueOf(ul));
         return areas;
     }
 
@@ -163,4 +176,16 @@ public class GetFangZiInfoServiceImpl extends BaseLogger implements GetFangZiInf
         }
         return strResult;
     }
+
+
+    private String getReplenish(Integer str,int replenish){
+        if(str == null){
+            str = 0;
+        }
+        String rex = "%0"+replenish+"d";
+        return String.format(rex,str);
+    }
+
 }
+
+

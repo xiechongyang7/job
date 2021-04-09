@@ -1,11 +1,16 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    password: qwe123
+    driver-class-name: org.postgresql.Driver
+
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://127.0.0.1:3306/job?characterEncoding=utf8&serverTimezone=UTC
-#    ?allowMultiQueries=true&autoReconnect=true&zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8
-    username: root
+#    url: jdbc:mysql://127.0.0.1:3306/job?characterEncoding=utf8&serverTimezone=UTC
+    url: jdbc:postgresql://satao.db.elephantsql.com:5432/atknvczm
+    #    ?allowMultiQueries=true&autoReconnect=true&zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8
+#    postgres://atknvczm:eA8R0PnY4iN5CzRZO8ebQDkMTNHj0t90@satao.db.elephantsql.com:5432/atknvczm
+    username: atknvczm
+    password: eA8R0PnY4iN5CzRZO8ebQDkMTNHj0t90
+#      password: qwe123
+#    username: root
     validationQuery: select 'x'
     poolPreparedStatements: true
     testOnBorrow: false
@@ -20,9 +25,9 @@ spring:
     minEvictableIdleTimeMillis: 30000
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
     minIdle: 3
-logging:
-  level:
-    mybatis: debug
+#logging:
+#  level:
+#    mybatis: debug
 #mapper:
 #  identity: MYSQL
 #  mappers: com.seesea.job.common.BaseMapper
@@ -32,7 +37,9 @@ mybatis:
   type-aliases-package: com.seesea.job.entity
 server:
   port: 8000
-
+logging:
+  file:
+    path: E:/workspace3/job
 
 
 

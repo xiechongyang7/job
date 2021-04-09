@@ -5,12 +5,12 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="id" jdbcType="VARCHAR" property="id" />
     <result column="area_name" jdbcType="VARCHAR" property="areaName" />
     <result column="region" jdbcType="VARCHAR" property="region" />
     <result column="town" jdbcType="VARCHAR" property="town" />
     <result column="year" jdbcType="VARCHAR" property="year" />
-    <result column="value" jdbcType="INTEGER" property="value" />
+    <result column="value" jdbcType="VARCHAR" property="value" />
     <result column="link" jdbcType="VARCHAR" property="link" />
     <result column="mark" jdbcType="VARCHAR" property="mark" />
     <result column="clinch" jdbcType="VARCHAR" property="clinch" />

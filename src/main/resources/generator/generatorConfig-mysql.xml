@@ -32,10 +32,10 @@
 
 
         <!-- jdbc 连接配置 -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/job?characterEncoding=utf8"
-                        userId="root"
-                        password="qwe123">
+        <jdbcConnection driverClass="org.postgresql.Driver"
+                        connectionURL="jdbc:postgresql://satao.db.elephantsql.com:5432/atknvczm"
+                        userId="atknvczm"
+                        password="eA8R0PnY4iN5CzRZO8ebQDkMTNHj0t90">
         </jdbcConnection>
 
 
