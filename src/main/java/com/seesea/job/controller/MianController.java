@@ -19,17 +19,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author xiechongyang
  */
 @Controller
-public class TestController {
+public class MianController {
 
     @Autowired
-    private InfoCollectionService service;
-
-
+    private InfoCollectionService collectionService;
 
     @Autowired
-    private GetFangZiInfoService servicez;
+    private GetFangZiInfoService getFangZiInfo;
 
-    @RequestMapping(value = "/test",method = RequestMethod.POST)
+    @RequestMapping(value = "/Job",method = RequestMethod.POST)
     @ResponseBody
     public Object test(CollectionReq req) throws BaseException, InterruptedException {
 
@@ -37,22 +35,17 @@ public class TestController {
         //java  1-3 年 近 一个月 大专 上海
         req1.setArea("101020100");
         req1.setEducational("202");
-        service.infoCollection(req);
+        collectionService.infoCollection(req);
         return 1;
 
     }
 
 
-    @RequestMapping(value = "/test2/{townname}",method = RequestMethod.POST)
+    @RequestMapping(value = "/area/{townname}",method = RequestMethod.POST)
     @ResponseBody
     public Object test2(@PathVariable("townname") String townname) throws BaseException {
 
-//        CollectionReq req1 = new CollectionReq();
-//        //java  1-3 年 近 一个月 大专 上海
-//        req1.setArea("101020100");
-//        req1.setEducational("202");
-//        service.infoCollection(req);
-        servicez.getFangZiInfo(townname);
+        getFangZiInfo.getFangZiInfo(townname);
 
         return 1;
 
