@@ -1,7 +1,9 @@
 package com.seesea.job.controller;
 
 import com.seesea.job.common.BaseException;
+import com.seesea.job.config.Check;
 import com.seesea.job.entity.req.CollectionReq;
+import com.seesea.job.entity.req.TestMode;
 import com.seesea.job.service.GetFangZiInfoService;
 import com.seesea.job.service.InfoCollectionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +48,16 @@ public class MianController {
     public Object test2(@PathVariable("townname") String townname) throws BaseException {
 
         getFangZiInfo.getFangZiInfo(townname);
+
+        return 1;
+
+    }
+
+
+    @Check
+    @RequestMapping(value = "/test",method = RequestMethod.POST)
+    @ResponseBody
+    public Object test(TestMode testMode) throws BaseException {
 
         return 1;
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seesea.job.mapper.BossAreaInfoMapper">
+  <resultMap id="BaseResultMap" type="com.seesea.job.entity.BossAreaInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="primary_key" jdbcType="INTEGER" property="primaryKey" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="area_code" jdbcType="VARCHAR" property="areaCode" />
+    <result column="province_key" jdbcType="INTEGER" property="provinceKey" />
+    <result column="city_key" jdbcType="INTEGER" property="cityKey" />
+  </resultMap>
+</mapper>

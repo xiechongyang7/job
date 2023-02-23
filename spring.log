@@ -1,0 +1,110 @@
+2021-12-20 15:53:08.739  INFO 38196 --- [main] com.seesea.job.JobApplication            : Starting JobApplication on sh-xiezhongyang with PID 38196 (E:\workspace3\job\target\classes started by xiezhongyang in E:\workspace3\job)
+2021-12-20 15:53:08.795  INFO 38196 --- [main] com.seesea.job.JobApplication            : No active profile set, falling back to default profiles: default
+2021-12-20 15:53:10.902  WARN 38196 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.seesea.job]' package. Please check your configuration.
+2021-12-20 16:00:34.935  INFO 30748 --- [main] com.seesea.job.JobApplication            : Starting JobApplication on sh-xiezhongyang with PID 30748 (E:\workspace3\job\target\classes started by xiezhongyang in E:\workspace3\job)
+2021-12-20 16:00:34.940  INFO 30748 --- [main] com.seesea.job.JobApplication            : No active profile set, falling back to default profiles: default
+2021-12-20 16:00:35.371  WARN 30748 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.seesea.job]' package. Please check your configuration.
+2021-12-20 16:00:35.767  INFO 30748 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
+2021-12-20 16:00:35.775  INFO 30748 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-20 16:00:35.775  INFO 30748 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2021-12-20 16:00:35.906  INFO 30748 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-12-20 16:00:35.906  INFO 30748 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 929 ms
+2021-12-20 16:00:36.772  INFO 30748 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-20 16:00:36.988  INFO 30748 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8000 (http) with context path ''
+2021-12-20 16:00:36.990  INFO 30748 --- [main] com.seesea.job.JobApplication            : Started JobApplication in 2.349 seconds (JVM running for 2.841)
+2021-12-20 16:04:56.650  INFO 30748 --- [http-nio-8000-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-20 16:04:56.650  INFO 30748 --- [http-nio-8000-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-12-20 16:04:56.699  INFO 30748 --- [http-nio-8000-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 49 ms
+2021-12-20 16:05:57.765  INFO 30748 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-20 16:06:01.315  INFO 1056 --- [main] com.seesea.job.JobApplication            : Starting JobApplication on sh-xiezhongyang with PID 1056 (E:\workspace3\job\target\classes started by xiezhongyang in E:\workspace3\job)
+2021-12-20 16:06:01.317  INFO 1056 --- [main] com.seesea.job.JobApplication            : No active profile set, falling back to default profiles: default
+2021-12-20 16:06:01.703  WARN 1056 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.seesea.job]' package. Please check your configuration.
+2021-12-20 16:06:02.399  INFO 1056 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
+2021-12-20 16:06:02.405  INFO 1056 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-20 16:06:02.405  INFO 1056 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2021-12-20 16:06:02.472  INFO 1056 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-12-20 16:06:02.472  INFO 1056 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1125 ms
+2021-12-20 16:06:04.215  INFO 1056 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-20 16:06:04.799  INFO 1056 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8000 (http) with context path ''
+2021-12-20 16:06:04.801  INFO 1056 --- [main] com.seesea.job.JobApplication            : Started JobApplication in 3.775 seconds (JVM running for 4.27)
+2021-12-20 16:06:12.941  INFO 1056 --- [http-nio-8000-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-20 16:06:12.941  INFO 1056 --- [http-nio-8000-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-12-20 16:06:12.951  INFO 1056 --- [http-nio-8000-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2021-12-20 16:06:16.359  INFO 1056 --- [http-nio-8000-exec-2] com.seesea.job.config.CheckInteceptor    : 校验Before objectcom.seesea.job.entity.req.TestMode@5c3fa182
+2021-12-20 16:06:29.289  INFO 1056 --- [http-nio-8000-exec-2] com.seesea.job.config.CheckInteceptor    : 校验Before nametest
+2021-12-20 16:06:30.571  INFO 1056 --- [http-nio-8000-exec-2] com.seesea.job.config.CheckInteceptor    : 校验 Afterexecution(Object com.seesea.job.controller.MianController.test(TestMode))
+2021-12-20 16:06:30.571  INFO 1056 --- [http-nio-8000-exec-2] com.seesea.job.config.CheckInteceptor    : 校验 After objectcom.seesea.job.entity.req.TestMode@5c3fa182
+2021-12-20 16:07:51.114  INFO 1056 --- [http-nio-8000-exec-3] com.seesea.job.config.CheckInteceptor    : 校验Before objectcom.seesea.job.entity.req.TestMode@64be84cc
+2021-12-20 16:07:51.115  INFO 1056 --- [http-nio-8000-exec-3] com.seesea.job.config.CheckInteceptor    : 校验Before nametest
+2021-12-20 16:07:51.117  INFO 1056 --- [http-nio-8000-exec-3] com.seesea.job.config.CheckInteceptor    : 校验 Afterexecution(Object com.seesea.job.controller.MianController.test(TestMode))
+2021-12-20 16:07:51.117  INFO 1056 --- [http-nio-8000-exec-3] com.seesea.job.config.CheckInteceptor    : 校验 After objectcom.seesea.job.entity.req.TestMode@64be84cc
+2021-12-20 16:07:51.187  INFO 1056 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-20 16:09:49.031  INFO 30960 --- [main] com.seesea.job.JobApplication            : Starting JobApplication on sh-xiezhongyang with PID 30960 (E:\workspace3\job\target\classes started by xiezhongyang in E:\workspace3\job)
+2021-12-20 16:09:49.033  INFO 30960 --- [main] com.seesea.job.JobApplication            : No active profile set, falling back to default profiles: default
+2021-12-20 16:09:49.416  WARN 30960 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.seesea.job]' package. Please check your configuration.
+2021-12-20 16:09:50.037  INFO 30960 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
+2021-12-20 16:09:50.044  INFO 30960 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-20 16:09:50.044  INFO 30960 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2021-12-20 16:09:50.110  INFO 30960 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-12-20 16:09:50.110  INFO 30960 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1047 ms
+2021-12-20 16:09:51.870  INFO 30960 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-20 16:09:52.434  INFO 30960 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8000 (http) with context path ''
+2021-12-20 16:09:52.436  INFO 30960 --- [main] com.seesea.job.JobApplication            : Started JobApplication in 3.699 seconds (JVM running for 4.204)
+2021-12-20 16:09:58.991  INFO 30960 --- [http-nio-8000-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-20 16:09:58.991  INFO 30960 --- [http-nio-8000-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-12-20 16:09:59.003  INFO 30960 --- [http-nio-8000-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 12 ms
+2021-12-20 16:10:13.170  INFO 30960 --- [http-nio-8000-exec-2] com.seesea.job.config.CheckInteceptor    : 校验Before objectcom.seesea.job.entity.req.TestMode@6687fd6a
+2021-12-20 16:10:16.432  INFO 30960 --- [http-nio-8000-exec-2] com.seesea.job.config.CheckInteceptor    : 校验Before nametest
+2021-12-20 16:10:17.940  INFO 30960 --- [http-nio-8000-exec-2] com.seesea.job.config.CheckInteceptor    : 校验 Afterexecution(Object com.seesea.job.controller.MianController.test(TestMode))
+2021-12-20 16:10:17.940  INFO 30960 --- [http-nio-8000-exec-2] com.seesea.job.config.CheckInteceptor    : 校验 After objectcom.seesea.job.entity.req.TestMode@6687fd6a
+2021-12-20 16:29:43.713  INFO 30960 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-20 16:29:52.739  INFO 16900 --- [main] com.seesea.job.JobApplication            : Starting JobApplication on sh-xiezhongyang with PID 16900 (E:\workspace3\job\target\classes started by xiezhongyang in E:\workspace3\job)
+2021-12-20 16:29:52.741  INFO 16900 --- [main] com.seesea.job.JobApplication            : No active profile set, falling back to default profiles: default
+2021-12-20 16:29:53.123  WARN 16900 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.seesea.job]' package. Please check your configuration.
+2021-12-20 16:29:53.754  INFO 16900 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
+2021-12-20 16:29:53.760  INFO 16900 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-20 16:29:53.760  INFO 16900 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2021-12-20 16:29:53.825  INFO 16900 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-12-20 16:29:53.826  INFO 16900 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1053 ms
+2021-12-20 16:29:55.591  INFO 16900 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-20 16:29:56.166  INFO 16900 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8000 (http) with context path ''
+2021-12-20 16:29:56.168  INFO 16900 --- [main] com.seesea.job.JobApplication            : Started JobApplication in 3.728 seconds (JVM running for 4.213)
+2021-12-20 16:30:01.680  INFO 16900 --- [http-nio-8000-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-20 16:30:01.680  INFO 16900 --- [http-nio-8000-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-12-20 16:30:01.691  INFO 16900 --- [http-nio-8000-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
+2021-12-20 16:30:10.782  INFO 16900 --- [http-nio-8000-exec-2] com.seesea.job.config.CheckInteceptor    : 校验Before object11
+2021-12-20 16:30:10.783  INFO 16900 --- [http-nio-8000-exec-2] com.seesea.job.config.CheckInteceptor    : 校验Before nametest
+2021-12-20 16:30:11.855  INFO 16900 --- [http-nio-8000-exec-2] com.seesea.job.config.CheckInteceptor    : 校验 Afterexecution(Object com.seesea.job.controller.MianController.test(TestMode))
+2021-12-20 16:30:11.855  INFO 16900 --- [http-nio-8000-exec-2] com.seesea.job.config.CheckInteceptor    : 校验 After objectcom.seesea.job.entity.req.TestMode@4508f366
+2021-12-20 16:35:30.698  INFO 16900 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-20 16:35:33.770  INFO 23432 --- [main] com.seesea.job.JobApplication            : Starting JobApplication on sh-xiezhongyang with PID 23432 (E:\workspace3\job\target\classes started by xiezhongyang in E:\workspace3\job)
+2021-12-20 16:35:33.773  INFO 23432 --- [main] com.seesea.job.JobApplication            : No active profile set, falling back to default profiles: default
+2021-12-20 16:35:34.164  WARN 23432 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.seesea.job]' package. Please check your configuration.
+2021-12-20 16:35:34.791  INFO 23432 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
+2021-12-20 16:35:34.797  INFO 23432 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-20 16:35:34.797  INFO 23432 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2021-12-20 16:35:34.863  INFO 23432 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-12-20 16:35:34.863  INFO 23432 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1057 ms
+2021-12-20 16:35:36.644  INFO 23432 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-20 16:35:37.201  INFO 23432 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8000 (http) with context path ''
+2021-12-20 16:35:37.204  INFO 23432 --- [main] com.seesea.job.JobApplication            : Started JobApplication in 3.737 seconds (JVM running for 4.213)
+2021-12-20 16:35:38.020  INFO 23432 --- [http-nio-8000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-20 16:35:38.020  INFO 23432 --- [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-12-20 16:35:38.031  INFO 23432 --- [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
+2021-12-20 16:35:42.181  INFO 23432 --- [http-nio-8000-exec-1] com.seesea.job.config.CheckInteceptor    : 校验Before object11
+2021-12-20 16:35:54.003  INFO 23432 --- [http-nio-8000-exec-1] com.seesea.job.config.CheckInteceptor    : 校验Before nametest
+2021-12-20 16:35:54.009  INFO 23432 --- [http-nio-8000-exec-1] com.seesea.job.config.CheckInteceptor    : 校验 Afterexecution(Object com.seesea.job.controller.MianController.test(TestMode))
+2021-12-20 16:35:54.010  INFO 23432 --- [http-nio-8000-exec-1] com.seesea.job.config.CheckInteceptor    : 校验 After objectcom.seesea.job.entity.req.TestMode@58ab1ea2
+2021-12-20 16:35:54.047  INFO 23432 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-20 16:37:07.895  INFO 9044 --- [main] com.seesea.job.JobApplication            : Starting JobApplication on sh-xiezhongyang with PID 9044 (E:\workspace3\job\target\classes started by xiezhongyang in E:\workspace3\job)
+2021-12-20 16:37:07.897  INFO 9044 --- [main] com.seesea.job.JobApplication            : No active profile set, falling back to default profiles: default
+2021-12-20 16:37:08.286  WARN 9044 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.seesea.job]' package. Please check your configuration.
+2021-12-20 16:37:08.907  INFO 9044 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
+2021-12-20 16:37:08.913  INFO 9044 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-20 16:37:08.913  INFO 9044 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2021-12-20 16:37:08.979  INFO 9044 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-12-20 16:37:08.979  INFO 9044 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1049 ms
+2021-12-20 16:37:10.711  INFO 9044 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-20 16:37:11.249  INFO 9044 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8000 (http) with context path ''
+2021-12-20 16:37:11.251  INFO 9044 --- [main] com.seesea.job.JobApplication            : Started JobApplication in 3.654 seconds (JVM running for 4.159)
+2021-12-20 16:37:14.153  INFO 9044 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'

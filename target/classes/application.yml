@@ -1,0 +1,52 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+
+    type: com.alibaba.druid.pool.DruidDataSource
+#    url: jdbc:mysql://127.0.0.1:3306/job?characterEncoding=utf8&serverTimezone=UTC
+    url: jdbc:postgresql://satao.db.elephantsql.com:5432/atknvczm
+    #    ?allowMultiQueries=true&autoReconnect=true&zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8
+#    postgres://atknvczm:eA8R0PnY4iN5CzRZO8ebQDkMTNHj0t90@satao.db.elephantsql.com:5432/atknvczm
+    username: atknvczm
+    password: eA8R0PnY4iN5CzRZO8ebQDkMTNHj0t90
+#      password: qwe123
+#    username: root
+    validationQuery: select 'x'
+    poolPreparedStatements: true
+    testOnBorrow: false
+    testOnReturn: false
+    testWhileIdle: true
+    timeBetweenEvictionRunsMillis: 60000
+    filters: stat,wall,slf4j
+    initialSize: 1
+    maxActive: 20
+    maxPoolPreparedStatementPerConnectionSize: 20
+    maxWait: 60000
+    minEvictableIdleTimeMillis: 30000
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    minIdle: 3
+#logging:
+#  level:
+#    mybatis: debug
+#mapper:
+#  identity: MYSQL
+#  mappers: com.seesea.job.common.BaseMapper
+#  not-empty: false
+mybatis:
+  mapper-locations: classpath:mybatis/*.xml
+  type-aliases-package: com.seesea.job.entity
+server:
+  port: 8000
+logging:
+  file:
+    path: E:/workspace3/job
+
+
+
+
+
+
+
+
+
+
